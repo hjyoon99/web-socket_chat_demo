@@ -7,7 +7,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
-@Configuration
+/*@Configuration
 @RequiredArgsConstructor
 @EnableWebSocket
 public class WebSocketConfig implements WebSocketConfigurer {
@@ -15,6 +15,18 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public WebSocketConfig(com.example.web.socketdemo.WebSocketHandler webSocketHandler){
         this.webSocketHandler = webSocketHandler;
     }
+
+    @Override
+    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        registry.addHandler(webSocketHandler, "ws/chat").setAllowedOrigins("*");
+    }
+}*/
+
+@RequiredArgsConstructor
+@Configuration
+@EnableWebSocket
+public class WebSocketConfig implements WebSocketConfigurer {
+    private final WebSocketHandler webSocketHandler;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
